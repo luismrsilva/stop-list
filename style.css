@@ -200,6 +200,14 @@ li .no_title{
 	box-shadow: 2px 0px 2px rgba(0,0,0,0.1);
 }
 
+footer{
+	position: fixed;
+	bottom: 26px;
+	left: 326px;
+	font-size: 0.9em;
+	color: gray;
+}
+
 .scroll {
 	overflow: auto;
 	position: absolute;
@@ -250,4 +258,15 @@ li .no_title{
 .warning {
 	background: red;
 	color: white;
+}
+
+a:hover {
+	cursor: pointer;
+	color: #42A5F5;
+	text-decoration: underline;
+}
+
+a {
+	text-decoration: none;
+	color: #2196f3;
 }

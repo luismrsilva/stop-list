@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<!--
+	(c) 2017 Luís Silva (luismrsilva)
+-->
+
+<title>StopList</title>
+<meta name="author" content="luismrsilva">
+
+<style type="text/css">
+	body {font-family: sans-serif}
+</style>
+
+<link rel="stylesheet" href="style.css">
+
+
+<div class="controls">
+	<div class="scroll">
+		<ul id="items">
+		</ul>
+	</div>
+	<div class="bottom">
+		<div class="row">
+			<label class="c12" for="input_title">Title</label>
+			<div class="input-box">
+				<input class="fullWidthInput" id="input_title" type="text"></input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="col">
+					<span class="icon">&#8986;</span>
+					<input max="10000" id="input_minutes" type="number" min="0" hint="&#8986;" value="1"></input>
+					<label for="input_minutes">min</label>
+				</div>
+			</div>
+			<script type="text/javascript">
+				var input_title = document.getElementById("input_title");
+				var input_minutes = document.getElementById("input_minutes");
+			</script>
+			<button class="col right" title="Add" onclick="stopList.addItem(input_title.value, input_minutes.value); input_title.value = ''">+</button>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div id="label_now" title="Current time">NO:W_:__</div>
+	<div id="label_current_title">Item</div>
+	<div id="label_left" title="Time left on current item">LE:FT</div>
+	<div id="label_total_left" title="Total time left">TO:TA</div>
+
+	<button id="button_start" class="btn-big" onclick=" this.style.display='none'; stopList.start()" title="Start">&#9654;</button>
+</div>
+
+<script src="lib.js"></script>
+<script src="Item.js"></script>
+<script src="StopList.js"></script>
+
+
+<script type="text/javascript">
+	var stopList = new StopList("button_start", "items", "label_current_title", "label_now", "label_left", "label_total_left");
+
+	window.onbeforeunload = function(e) { return "" };
+</script>
+
+

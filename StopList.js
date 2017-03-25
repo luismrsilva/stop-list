@@ -150,6 +150,8 @@ StopList.prototype.updateBigButton = function(button){
 	}
 	button_start.innerHTML =	(this.isPaused || this.running == false)
 								? "&#9654;" : "&#9646;&#9646;";
+	button_start.title =		(this.isPaused || this.running == false)
+								? "Start" : "Pause";
 };
 
 StopList.prototype.onFinishItem = function(item){

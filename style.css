@@ -48,6 +48,12 @@ body {
 
 
 
+button:disabled {
+	opacity: 0.5;
+	background-color: #2196F3 !important;
+	cursor: default !important;
+}
+
 
 button:hover {
 	background-color: #42A5F5;
@@ -70,7 +76,7 @@ button {
 	margin: 0.5em;
 	padding: 0.5em;
 	text-transform: uppercase;
-	transition: background-color 0.2s;
+	transition: background-color 0.2s, opacity 0.3s;
 	user-select: none;
 }
 

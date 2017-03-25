@@ -18,6 +18,7 @@ function StopList(button_start, ul_items, label_current_title, label_now, label_
 	this.currentItem = null;
 
 	this.running = false;
+	this.paused = false;
 
 	var thisStopList = this;
 	this.timer = setInterval(function(){thisStopList.loop()}, 1000);
@@ -26,11 +27,33 @@ function StopList(button_start, ul_items, label_current_title, label_now, label_
 	this.audio = new Audio("https://upload.wikimedia.org/wikipedia/commons/0/05/Beep-09.ogg");
 }
 
-StopList.prototype.addItem = function(title, minutes){
-	var item = new Item(this.itemQueue, this.ul_items, title, minutes, 0);
+StopList.prototype.insert = function(item){
 	this.itemQueue.push(item);
 	this.total_seconds_left += item.getTotalSeconds();
+	this.button_start.disabled = false;
 };
+
+StopList.prototype.addItem = function(title, minutes){
+	var item = new Item(this, this.ul_items, title, minutes, 0);
+	this.insert(item);
+};
+
+StopList.prototype.removeItem = function(item){
+	var index = this.itemQueue.indexOf(item);
+	this.itemQueue.splice(index, 1);
+	this.total_seconds_left -= item.getTotalSeconds();
+	this.updateBigButton();
+}
+
+StopList.prototype.rewind = function(){
+	var len = this.finishedQueue.length;
+	for(var i = 0; i < len; i++){
+		var item = this.finishedQueue[i];
+		item.renew();
+		this.insert(item);
+	}
+	this.finishedQueue = new Array();
+}
 
 StopList.prototype.getNextItem = function(){
 	return this.itemQueue.shift();
@@ -52,7 +75,7 @@ StopList.prototype.updateNow = function(){
 
 StopList.prototype.loop = function(){
 	this.updateNow();
-	if(this.running){
+	if(this.isPaused == false && this.running){
 		this.seconds_left--;
 		this.total_seconds_left--;
 		this.updateCountdown(this.label_left, this.seconds_left);
@@ -73,6 +96,7 @@ StopList.prototype.start = function(){
 		this.currentItem = null;
 	}
 
+	this.isPaused = false;
 	if(this.itemQueue.length > 0){
 		this.currentItem = this.getNextItem();
 		this.label_current_title.innerText = this.currentItem.getTitle();
@@ -86,12 +110,34 @@ StopList.prototype.start = function(){
 	}
 };
 
+StopList.prototype.bigButtonPress = function(){
+	if(!this.running){
+		this.start();
+	}else{
+		this.isPaused = !this.isPaused;
+	}
+	this.updateBigButton();
+};
+
+StopList.prototype.updateBigButton = function(button){
+	if(this.itemQueue.length > 0){
+		this.button_start.disabled = false;
+	}else{
+		if(this.running == false){
+			this.button_start.disabled = true;
+		}
+	}
+	button_start.innerHTML =	(this.isPaused || this.running == false)
+								? "&#9654;" : "&#9646;&#9646;";
+};
+
 StopList.prototype.onFinishItem = function(item){
 	this.showWarning();
 }
 
 StopList.prototype.onFinishAll = function(){
-	this.button_start.style.display = "";
+	this.rewind();
+	this.updateBigButton();
 }
 
 StopList.prototype.showWarning = function(){

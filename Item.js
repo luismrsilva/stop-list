@@ -2,8 +2,8 @@
  * (c) 2017 Luís Silva (luismrsilva)
  * */
 
-function Item(items_array, parent, title, minutes){
-	this.items_array = items_array;
+function Item(stop_list, parent, title, minutes){
+	this.stop_list = stop_list;
 	this.title = title;
 	this.seconds = minutes * 60;
 	this.parent = parent;
@@ -32,6 +32,9 @@ function Item(items_array, parent, title, minutes){
 	this.parent.appendChild(this.element);
 }
 
+Item.prototype.renew = function(){
+};
+
 Item.prototype.getTotalSeconds = function(){
 	return this.seconds;
 };
@@ -45,7 +48,6 @@ Item.prototype.setActive = function(active){
 };
 
 Item.prototype.remove = function(){
-	var index = this.items_array.indexOf(this);
-	this.items_array.splice(index, 1);
+	this.stop_list.removeItem(this);
 	this.parent.removeChild(this.element);
 };

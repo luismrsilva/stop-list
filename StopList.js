@@ -30,7 +30,8 @@ function StopList(button_start, ul_items, label_current_title, label_now, label_
 StopList.prototype.insert = function(item){
 	this.itemQueue.push(item);
 	this.total_seconds_left += item.getTotalSeconds();
-	this.button_start.disabled = false;
+	this.updateTotalLeft();
+	this.updateBigButton();
 };
 
 StopList.prototype.addItem = function(title, minutes){
@@ -40,12 +41,28 @@ StopList.prototype.addItem = function(title, minutes){
 
 StopList.prototype.removeItem = function(item){
 	var index = this.itemQueue.indexOf(item);
-	this.itemQueue.splice(index, 1);
-	this.total_seconds_left -= item.getTotalSeconds();
+	if(index >= 0){
+		this.itemQueue.splice(index, 1);
+	}else{
+		index = this.finishedQueue.indexOf(item);
+		if(index >= 0){
+			this.finishedQueue.splice(index, 1);
+		}else{
+			console.log("ERROR: no such item");
+		}
+	}
+	console.log(item.isEnabled());
+	if(item.isEnabled()){
+		this.total_seconds_left -= item.getTotalSeconds();
+		this.updateTotalLeft();
+	}
 	this.updateBigButton();
 }
 
 StopList.prototype.rewind = function(){
+	this.total_seconds_left = 0;
+	this.seconds_left = 0;
+
 	var len = this.finishedQueue.length;
 	for(var i = 0; i < len; i++){
 		var item = this.finishedQueue[i];
@@ -58,6 +75,10 @@ StopList.prototype.rewind = function(){
 StopList.prototype.getNextItem = function(){
 	return this.itemQueue.shift();
 };
+
+StopList.prototype.updateTotalLeft = function(){
+	return this.updateCountdown(this.label_total_left, this.total_seconds_left);
+}
 
 StopList.prototype.updateCountdown = function(el, seconds){
 	var hours = Math.floor(seconds / 3600);
@@ -79,7 +100,7 @@ StopList.prototype.loop = function(){
 		this.seconds_left--;
 		this.total_seconds_left--;
 		this.updateCountdown(this.label_left, this.seconds_left);
-		this.updateCountdown(this.label_total_left, this.total_seconds_left);
+		this.updateTotalLeft();
 
 		if(this.seconds_left <= 0){
 			this.start();

@@ -30,10 +30,17 @@ function Item(stop_list, parent, title, minutes){
 	el_desc.appendChild(this.button_remove);
 
 	this.parent.appendChild(this.element);
+
+	this.enabled = true;
 }
 
 Item.prototype.renew = function(){
+	this.enabled = true;
 };
+
+Item.prototype.isEnabled = function(){
+	return this.enabled;
+}
 
 Item.prototype.getTotalSeconds = function(){
 	return this.seconds;
@@ -45,6 +52,9 @@ Item.prototype.getTitle = function(){
 
 Item.prototype.setActive = function(active){
 	this.element.className = "item" + (active ? "_active" : "");
+	if(active == false){
+		this.enabled = false;
+	}
 };
 
 Item.prototype.remove = function(){

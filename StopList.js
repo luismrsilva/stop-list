@@ -187,7 +187,5 @@ StopList.prototype.showWarning = function(){
 	var leThis = this;
 	this.warning_fade = setTimeout(function(){
 		document.body.className = "";
-		leThis.audio.currentTime = 0;
-		leThis.audio.play();
-	}, 1500);
+	}, 2000);
 }

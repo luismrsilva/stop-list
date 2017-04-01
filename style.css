@@ -4,7 +4,8 @@
 
 body {
 	font-family: sans-serif;
-	background: #EEE;
+	background: #212121;
+	color: #EEE;
 
 	user-select: none;
 	cursor: default;
@@ -15,7 +16,7 @@ body {
 .row {
 	display: block;
 	clear: both;
-	margin: 1px 0;
+	margin: 1px 3px;
 }
 
 .col {
@@ -126,6 +127,7 @@ label {
 
 ul {
 	padding: 0;
+	margin: 12px 3px
 }
 
 li {
@@ -173,14 +175,20 @@ li button {
 	margin: 0;
 }
 
+.item_active .no_title{
+	color: rgba(255,255,255,0.55);
+	font-style: italic;
+}
+
 li .no_title{
 	color: rgba(0,0,0,0.45);
 	font-style: italic;
 }
 
 .item_active {
-	background-color: #E1BEE7;
+	background-color: #E91E63;
 	border-radius: 2px;
+	color: white;
 }
 
 .item_active button {
@@ -195,7 +203,7 @@ li .no_title{
 
 	height: 100%;
 	width: 320px;
-	background: #7E57C2;
+	background: #880E4F;
 	color: white;
 	box-shadow: 2px 0px 2px rgba(0,0,0,0.1);
 }
@@ -256,7 +264,7 @@ footer{
 }
 
 .warning {
-	background: red;
+	background: #E91E63;
 	color: white;
 }
 

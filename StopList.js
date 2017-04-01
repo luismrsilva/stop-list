@@ -2,7 +2,8 @@
  * (c) 2017 Luís Silva (luismrsilva)
  * */
 
-function StopList(button_start, ul_items, label_current_title, label_now, label_left, label_total_left){
+function StopList(button_skip, button_start, ul_items, label_current_title, label_now, label_left, label_total_left){
+	this.button_skip = byId(button_skip);
 	this.button_start = byId(button_start);
 	this.ul_items = byId(ul_items);
 	this.label_current_title = byId(label_current_title);
@@ -140,18 +141,30 @@ StopList.prototype.bigButtonPress = function(){
 	this.updateBigButton();
 };
 
+StopList.prototype.skipButtonPress = function(){
+	this.total_seconds_left -= this.seconds_left;
+	this.seconds_left = 0;
+	this.updateCountdown(this.label_left, this.seconds_left);
+	this.updateTotalLeft();
+	this.start();
+	this.updateBigButton();
+}
+
 StopList.prototype.updateBigButton = function(button){
 	if(this.itemQueue.length > 0){
 		this.button_start.disabled = false;
 	}else{
 		if(this.running == false){
-			this.button_start.disabled = true;
+			this.button_start.disabled = false;
 		}
 	}
 	button_start.innerHTML =	(this.isPaused || this.running == false)
 								? "&#9654;" : "&#9646;&#9646;";
 	button_start.title =		(this.isPaused || this.running == false)
 								? "Start" : "Pause";
+
+
+	this.button_skip.disabled = !this.running;
 };
 
 StopList.prototype.onFinishItem = function(item){

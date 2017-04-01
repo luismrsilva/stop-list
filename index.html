@@ -49,6 +49,7 @@
 	<div id="label_total_left" title="Total time left">TO:TA</div>
 
 	<button id="button_start" class="btn-big" disabled="true" onclick="stopList.bigButtonPress()" title="Start">&#9654;</button>
+	<button id="button_skip" class="btn-big" disabled="true" onclick="stopList.skipButtonPress()" title="Skip">&#9654;&#9646;</button>
 </div>
 
 <script src="lib.js"></script>
@@ -57,7 +58,7 @@
 
 
 <script type="text/javascript">
-	var stopList = new StopList("button_start", "items", "label_current_title", "label_now", "label_left", "label_total_left");
+	var stopList = new StopList("button_skip", "button_start", "items", "label_current_title", "label_now", "label_left", "label_total_left");
 
 	window.onbeforeunload = function(e) { return "" };
 </script>

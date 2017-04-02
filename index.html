@@ -8,6 +8,7 @@
 <meta name="author" content="luismrsilva">
 
 <meta name="theme-color" content="#2196F3" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style type="text/css">
 	body {font-family: sans-serif}
@@ -17,10 +18,16 @@
 <link rel="icon" type="image/svg+xml" href="stop-list_icon.svg">
 
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="menu-toggle.css">
 <link rel="manifest" href="manifest.json">
 
+<script src="MenuToggler.js"></script>
+<script>
+	menuToggler = new MenuToggler();
+</script>
 
 <div class="controls">
+	<div class="_menu_toggle" onclick="menuToggler.toggleMennu()">&#9776;</div>
 	<div class="scroll">
 		<ul id="items">
 		</ul>
@@ -56,6 +63,8 @@
 
 	<button id="button_start" class="btn-big" disabled="true" onclick="stopList.bigButtonPress()" title="Start">&#9654;</button>
 	<button id="button_skip" class="btn-big" disabled="true" onclick="stopList.skipButtonPress()" title="Skip">&#9654;&#9646;</button>
+
+	<footer>&copy; 2017 <a href="https://github.com/luismrsilva/" target="_blank">Luís Silva (luismrsilva)</a>.</footer>
 </div>
 
 <script src="lib.js"></script>
@@ -69,5 +78,3 @@
 	window.onbeforeunload = function(e) { return "" };
 </script>
 
-
-<footer>&copy; 2017 <a href="https://github.com/luismrsilva/" target="_blank">Luís Silva (luismrsilva)</a>.</footer>

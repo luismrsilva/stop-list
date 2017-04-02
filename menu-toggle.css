@@ -1,0 +1,57 @@
+/**
+ * menu toggle stuff
+ */
+
+
+@media only screen and (max-width: 810px) {
+	/* mobile */
+
+	.main {
+		margin-left: 0 !important;
+	}
+}
+
+/* hidden menu overrides */
+._menu_hidden .main {
+	margin-left: 0
+}
+
+._menu_hidden .controls {
+	margin-left: -310px;
+}
+/***/
+
+._menu_toggle {
+	line-height: 2em;
+	text-align: center;
+	font-weight: bold;
+	width: 2em;
+	height: 2em;
+	position: absolute;
+	top: 2em;
+	left: 320px;
+
+	background-color: #880E4F;
+	color: white;
+	box-shadow: 2px 0px 2px rgba(0,0,0,0.1);
+	cursor: pointer;
+
+	z-index: 2;
+	transition: background-color 0.2s, opacity 0.3s;
+}
+
+._menu_toggle:hover {
+	background-color: #AD1457;
+}
+
+._menu_toggle:active {
+	background-color: #F06292;
+}
+
+.controls {
+	transition: margin-left 0.2s;
+}
+
+.main {
+	transition: margin-left 0.2s;
+}

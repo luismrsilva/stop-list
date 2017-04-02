@@ -3,7 +3,6 @@
 
 
 function MenuToggler(){
-	// body most have have empty class (class it will be overridden)
 	this.menuIsHidden = false;
 }
 
@@ -16,11 +15,11 @@ MenuToggler.prototype.toggleMennu = function(){
 }
 
 MenuToggler.prototype.hideMenu = function(){
-	document.body.className = "_menu_hidden";
+	document.body.className += " _menu_hidden";
 	this.menuIsHidden = true;
 }
 
 MenuToggler.prototype.showMenu = function(){
-	document.body.className = "";
+	document.body.className = document.body.className.replace(/(?:^|\s*)_menu_hidden(?!\S)/g, "");
 	this.menuIsHidden = false;
 }

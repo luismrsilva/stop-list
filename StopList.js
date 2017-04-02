@@ -177,7 +177,7 @@ StopList.prototype.onFinishAll = function(){
 }
 
 StopList.prototype.showWarning = function(){
-	document.body.className = "warning";
+	document.body.className += " warning";
 	this.audio.currentTime = 0;
 	this.audio.play();
 
@@ -186,6 +186,6 @@ StopList.prototype.showWarning = function(){
 	}
 	var leThis = this;
 	this.warning_fade = setTimeout(function(){
-		document.body.className = "";
+		document.body.className = document.body.className.replace(/(?:^|\s*)warning(?!\S)/g, "");
 	}, 2000);
 }

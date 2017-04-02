@@ -1,0 +1,17 @@
+{
+	"short_name":	"StopList",
+	"name":			"StopList",
+	"icons": [
+		{
+			"src": "stop-list_icon-256.png",
+			"sizes": "256x256"
+		},
+		{
+			"src": "stop-list_icon.svg.png"
+		}
+	],
+	"display": "standalone",
+	"start_url": "https://luismrsilva.github.io/stop-list/",
+	"theme_color": "#2196F3",
+	"background_color": "#212121"
+}

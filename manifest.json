@@ -7,7 +7,9 @@
 			"sizes": "256x256"
 		},
 		{
-			"src": "stop-list_icon.svg.png"
+			"src": "stop-list_icon.svg",
+			"type": "image/svg+xml",
+			"sizes": "any"
 		}
 	],
 	"display": "standalone",

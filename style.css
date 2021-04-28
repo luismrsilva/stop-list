@@ -260,6 +260,14 @@ footer{
 	margin: 0 1em;
 }
 
+/* keep height when empty */
+#label_current_title::after {
+	content: "\00a0"; /* &#nbsp; */
+}
+#label_current_title:empty {
+	visibility: hidden;
+}
+
 #label_left {
 	font-size: 8em;
 }

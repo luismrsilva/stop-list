@@ -162,7 +162,7 @@ li .time {
 }
 
 li .time::before {
-	content: '\231A';
+	content: '\23F2';
 	padding-right: 0.25em;
 }
 

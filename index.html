@@ -50,7 +50,7 @@
 				var input_title = document.getElementById("input_title");
 				var input_minutes = document.getElementById("input_minutes");
 			</script>
-			<button class="col right" title="Add" onclick="stopList.addItem(input_title.value, input_minutes.value); input_title.value = ''">+</button>
+			<button id="btn_add" class="col right" title="Add" onclick="stopList.addItem(input_title.value, input_minutes.value); input_title.value = ''">+</button>
 		</div>
 	</div>
 </div>
@@ -76,4 +76,8 @@
 	var stopList = new StopList("button_skip", "button_start", "items", "label_current_title", "label_now", "label_left", "label_total_left");
 
 	window.onbeforeunload = function(e) { return "" };
+
+	let btn_add = document.getElementById("btn_add");
+	pressButtonOnInputEnter(input_title, btn_add);
+	pressButtonOnInputEnter(input_minutes, btn_add);
 </script>

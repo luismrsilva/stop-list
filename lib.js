@@ -22,3 +22,11 @@ function toggle(el_id){
 		el.style.display = "none";
 	}
 }
+
+function pressButtonOnInputEnter(inputEl, buttonEl){
+	inputEl.addEventListener("keydown", (event) => {
+		if(event.keyCode == 13 /* enter */){
+			buttonEl.click();
+		}
+	});
+}

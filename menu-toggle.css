@@ -22,7 +22,8 @@
 /***/
 
 ._menu_toggle {
-	line-height: 2em;
+	line-height: 2.125em;
+	font-size: 1.25em;
 	text-align: center;
 	font-weight: bold;
 	width: 2em;

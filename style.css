@@ -284,3 +284,17 @@ a {
 	text-decoration: none;
 	color: #2196f3;
 }
+
+#items:empty {
+	text-align: center;
+}
+
+#items:empty::after {
+	content: '(add an item below)';
+}
+
+/* align vertically with menu button */
+#items:empty::after {
+	position: relative;
+	top: 2.45em;
+}

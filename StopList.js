@@ -151,13 +151,8 @@ StopList.prototype.skipButtonPress = function(){
 }
 
 StopList.prototype.updateBigButton = function(button){
-	if(this.itemQueue.length > 0){
-		this.button_start.disabled = false;
-	}else{
-		if(this.running == false){
-			this.button_start.disabled = false;
-		}
-	}
+	this.button_start.disabled = !this.running && this.itemQueue.length == 0;
+
 	button_start.innerHTML =	(this.isPaused || this.running == false)
 								? "&#9654;" : "&#9646;&#9646;";
 	button_start.title =		(this.isPaused || this.running == false)

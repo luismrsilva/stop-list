@@ -1,5 +1,5 @@
 /*
- * (c) 2017 Luís Silva (luismrsilva)
+ * (c) 2024 Luís Silva (luismrsilva)
  * */
 
 function StopList(button_skip, button_start, ul_items, label_current_title, label_now, label_left, label_total_left){

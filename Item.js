@@ -1,5 +1,5 @@
 /*
- * (c) 2017 Luís Silva (luismrsilva)
+ * (c) 2024 Luís Silva (luismrsilva)
  * */
 
 function Item(stop_list, parent, title, minutes, seconds = 0){

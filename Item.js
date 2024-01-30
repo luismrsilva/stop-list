@@ -2,10 +2,10 @@
  * (c) 2017 Luís Silva (luismrsilva)
  * */
 
-function Item(stop_list, parent, title, minutes){
+function Item(stop_list, parent, title, minutes, seconds = 0){
 	this.stop_list = stop_list;
 	this.title = title;
-	this.seconds = minutes * 60;
+	this.seconds = minutes * 60 + parseInt(seconds);
 	this.parent = parent;
 	this.element = document.createElement("li");
 	if(title == null || title.length < 1){
@@ -18,7 +18,7 @@ function Item(stop_list, parent, title, minutes){
 
 	var el_desc = document.createElement("div");
 	el_desc.className = "desc";
-	el_desc.innerHTML = "<div class='time'>" + minutes + "</div>";
+	el_desc.innerHTML = "<div class='time'>" + secondsToStr(this.seconds) + "</div>";
 	this.element.appendChild(el_desc);
 
 	this.button_remove = document.createElement("button");

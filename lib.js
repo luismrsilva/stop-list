@@ -30,3 +30,13 @@ function pressButtonOnInputEnter(inputEl, buttonEl){
 		}
 	});
 }
+
+function secondsToStr(seconds){
+	var hours = Math.floor(seconds / 3600);
+	var minutes = Math.floor((seconds % 3600) / 60);
+	var seconds = Math.floor(seconds % 60);
+
+	return (hours > 0 ? zp(hours) + "h " : "")
+					+ zp(minutes) + "m "
+					+ zp(seconds) + "s";
+}

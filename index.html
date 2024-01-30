@@ -41,16 +41,23 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">
+			<div class="col" title="minutes">
 				<!-- &#x23F2; -->
-				<input max="10000" id="input_minutes" type="number" min="0" value="1"></input>
-				<label for="input_minutes">min</label>
+				<input max="10000" id="input_minutes" type="number" min="0" value="0"></input>
+				<label for="input_minutes">m</label>
+			</div>
+			<div class="col" title="seconds">
+				<input max="100" id="input_seconds" type="number" min="0" value="30"></input>
+				<label for="input_seconds">s</label>
 			</div>
 			<script type="text/javascript">
 				var input_title = document.getElementById("input_title");
 				var input_minutes = document.getElementById("input_minutes");
+				var input_seconds = document.getElementById("input_seconds");
 			</script>
-			<button id="btn_add" class="col right" title="Add" onclick="stopList.addItem(input_title.value, input_minutes.value); input_title.value = ''">+</button>
+		</div>
+		<div class="row">
+			<button id="btn_add" class="col right" title="Add" onclick="stopList.addItem(input_title.value, input_minutes.value, input_seconds.value); input_title.value = ''; input_title.focus()">+</button>
 		</div>
 	</div>
 </div>

@@ -35,8 +35,8 @@ StopList.prototype.insert = function(item){
 	this.updateBigButton();
 };
 
-StopList.prototype.addItem = function(title, minutes){
-	var item = new Item(this, this.ul_items, title, minutes, 0);
+StopList.prototype.addItem = function(title, minutes, seconds){
+	var item = new Item(this, this.ul_items, title, minutes, seconds);
 	this.insert(item);
 };
 
@@ -82,12 +82,7 @@ StopList.prototype.updateTotalLeft = function(){
 }
 
 StopList.prototype.updateCountdown = function(el, seconds){
-	var hours = Math.floor(seconds / 3600);
-	var minutes = Math.floor((seconds % 3600) / 60);
-	var seconds = Math.floor(seconds % 60);
-
-	el.innerText =	(hours > 0 ? zp(hours) + "h " : "")
-					+ zp(minutes) + "m " + zp(seconds) + "s";
+	el.innerText = secondsToStr(seconds);
 };
 
 StopList.prototype.updateNow = function(){
